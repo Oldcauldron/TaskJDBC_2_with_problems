@@ -52,19 +52,14 @@ public class Util {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
-
                 Configuration configuration = new Configuration();
-
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-//                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/testbase?useSSL=false&allowPublicKeyRetrieval=true");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/testbase?useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT");
-//                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/testbase?useSSL=false");
+                settings.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/testbase?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=GMT");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "port40");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL8Dialect");
-//                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5InnoDBDialect");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 settings.put(Environment.HBM2DDL_AUTO, "create-drop");
