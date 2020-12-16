@@ -1,12 +1,20 @@
 package jm.task.core.jdbc.model;
 
+import javax.persistence.*;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Entity
 @Table
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
     @Column
@@ -19,7 +27,6 @@ public class User {
     private Byte age;
 
     public User() {
-
     }
 
     @Override
